@@ -21,7 +21,7 @@ screen = pygame.display.set_mode(size, pygame.SCALED)
 quadTreeEnabled = True
 main_clock = pygame.time.Clock()
 while True:
-    main_clock.tick(60)
+    main_clock.tick(120)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
