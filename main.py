@@ -39,7 +39,6 @@ while True:
             # Add ball
             if event.key == pygame.K_SPACE:
                 max_mass, min_size, max_size, min_speed, max_speed = 100, 15, 60, 1, 10
-
                 mass = random.randint(1, max_mass)
                 size = int(min_size + (max_size-min_size)/max_mass*(mass-1))
                 speed = int(max_speed + (min_speed-max_speed)/max_mass*(mass-1))
