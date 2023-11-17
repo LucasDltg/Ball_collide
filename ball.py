@@ -1,5 +1,3 @@
-import math
-
 
 class Ball:
 
@@ -21,12 +19,11 @@ class Ball:
         return False
 
     def resolveCollision(self, b: 'Ball'):
-        # Calculate the normal vector
-        normal = [self.x_pos + self.size - b.x_pos - b.size, self.y_pos + self.size - b.y_pos - b.size]
-        distance = math.sqrt(normal[0] ** 2 + normal[1] ** 2)
+        normal = [self.x_pos + self.size / 2 - b.x_pos - b.size / 2, self.y_pos + self.size / 2 - b.y_pos - b.size / 2]
+        distance = (normal[0] ** 2 + normal[1] ** 2) ** 0.5
 
         if distance != 0:
-            unit_normal = [normal[0] / distance, normal[1] / distance]
+            unit_normal = [normal[0]/distance, normal[1]/distance]
 
             relative_velocity = [self.x_speed - b.x_speed, self.y_speed - b.y_speed]
 
@@ -39,8 +36,7 @@ class Ball:
             b.x_speed += impulse * self.mass * unit_normal[0]
             b.y_speed += impulse * self.mass * unit_normal[1]
 
-
-            overlap = (self.size + b.size)/2 - distance
+            overlap = (self.size+b.size)/2 - distance
             move = [overlap * unit_normal[0], overlap * unit_normal[1]]
 
             self.x_pos += move[0] / 2
